@@ -1,0 +1,21 @@
+<div>
+    {% for rm in roomsk %}
+        <div>
+            {% if request.user == rm.host %}
+            <a href="{% url 'update-room' rm.id %}">Edit</a>
+            <a href="{% url 'delete-room' rm.id %}">Delete</a>
+            {% endif %}
+            <a href="{% url 'user-Profile' rm.host.id %}">@{{rm.host.username}}</a>
+            <!-- span is jus an inline tag -->
+           <!-- <h5>{{rm.id}} -- <a href="/room/{{rm.id}}/"> {{rm.name}} </a> </h5>-->
+            <h5>{{rm.id}} -- <a href="{% url 'room' rm.id %}"> {{rm.name}} </a> </h5>
+            <small>{{rm.topic.name}}</small>
+            <hr>
+<!--here for every rm in roomsk dictionary anew url is created and passedd and ->
+<!-- "/room/{{rm.id}}/" it set value of k in urls.py path for room/<str:k> where k will become rm.id
+    here %url is new method used instead of /room/{{rm.id}}-->
+<!-- #here rm.name is made cickable with the path leading to room page with respective room no.-->
+        </div>
+       
+    {% endfor %}
+</div>
