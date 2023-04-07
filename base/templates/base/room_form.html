@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div>
+    <form method="POST" action="">
+        <!-- We are using post insteadof get as get will show the details on url itself -->
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="submit"/>
+
+    </form>
+</div>
+
+{% endblock content %}
